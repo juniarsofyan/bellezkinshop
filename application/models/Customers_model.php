@@ -92,7 +92,18 @@ class Customers_model extends CI_Model
 
     public function get($id)
     {
-        $query = $this->db->get_where('cn_customer', array('id ' => $id));
+        $query = $this->db->get_where('cn_customer', array('id' => $id));
+        return $query->row_array();
+    }
+
+    public function check_customer($email, $password)
+    {
+        $where_clause = array(
+            'email' => $email,
+            'password' => md5($password)
+        );
+
+        $query = $this->db->get_where('cn_customer', $where_clause);
         return $query->row_array();
     }
 
@@ -106,6 +117,18 @@ class Customers_model extends CI_Model
     {
         $this->db->where('cn_customer.id', $id);
         return $this->db->update('cn_customer', $data);
+    }
+
+    public function set_login_token($id, $data)
+    {
+        $this->db->where('cn_customer.id', $id);
+        return $this->db->update('cn_customer', $data);
+    }
+
+    public function remove_login_token($login_token)
+    {
+        $this->db->where('cn_customer.login_token', $login_token);
+        return $this->db->update('cn_customer', array('login_token' => ''));
     }
 }
 

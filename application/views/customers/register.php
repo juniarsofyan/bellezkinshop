@@ -26,8 +26,8 @@
             <input type="date" id="tgl_lahir" name="tgl_lahir" value="<?php echo set_value('tgl_lahir'); ?>">
             <br /> <br />
             <label for="jenis_kelamin">Jenis Kelamin:</label> <br />
-            <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="PRIA"> PRIA <br />
-            <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="WANITA"> WANITA
+            <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="PRIA" <?php echo set_radio('jenis_kelamin', 'PRIA'); ?>> PRIA <br />
+            <input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="WANITA" <?php echo set_radio('jenis_kelamin', 'WANITA'); ?>> WANITA
             <br /> <br />
             <label for="telepon">Telepon:</label> <br />
             <input type="text" id="telepon" name="telepon" value="<?php echo set_value('telepon'); ?>">
