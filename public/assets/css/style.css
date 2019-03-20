@@ -1,0 +1,332 @@
+@font-face {
+  font-family: myfont;
+  src: url('');
+}
+
+body {
+  font-family: arial;
+  font-size: 12px;
+}
+
+#kotak {
+  color: white;
+  position: relative;
+  background-color: #E58DB7;
+  font-family: "Segoe UI Light";
+  text-align: center;
+  font-size: 11px;
+  padding: 12px;
+  margin: 0;
+}
+
+#joinreseller {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  color: black;
+  background-color: grey;
+  width: 110px;
+  padding: 8px;
+  background-image: linear-gradient(to right, #C0C0C0, white, #C0C0C0);
+  font-size: 10px;
+  font-family: arial;
+  cursor: pointer;
+}
+
+#logreseller {
+  color: black;
+  background-color: grey;
+  width: 110px;
+  padding: 8px;
+  background-image: linear-gradient(to right, #C0C0C0, white, #C0C0C0);
+  font-size: 10px;
+  font-family: arial;
+  text-align: center;
+  cursor: pointer;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+} /* slide bar */
+
+.logo {
+  padding: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menus {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.menus a {
+  color: green;
+  text-decoration: none;
+}
+
+#menu-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+} /* nav menu */
+
+li {
+  float: left;
+} /* nav menu */
+
+li a, .drpbtn {
+  display: inline-block;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+} /* nav menu */
+
+li a:hover, .drpdwn:hover .drpbtn {
+  color: #E58DB7;
+  text-decoration: none;
+} /* nav menu */
+
+li.drpdwn {
+  display: inline-block;
+} /* nav menu */
+
+.drpdwn-cont {
+  display: none;
+  color: white;
+  position: absolute;
+  min-width: 160px;
+  background-color: #E58DB7;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+} /* nav menu */
+
+.drpdwn-cont::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 22%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #E58DB7 transparent;
+} /* nav menu */
+
+.drpdwn-cont a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+} /* nav menu */
+
+.drpdwn:hover .drpdwn-cont {
+  display: block;
+} /* nav menu */
+
+input[type=text] {
+  padding: 6px;
+  font-size: 12px;
+  margin-top: 6px;
+  border: 1px solid #DDDDDD;
+  float: left;
+  width: 200px;
+  background: white;
+}  /* search bar */
+
+.search-container button {
+  float: left;
+  width: 30px;
+  padding: 6px;
+  margin-top: 6px;
+  background: white;
+  color: black;
+  font-size: 12px;
+  border: 1px solid #DDDDDD;
+  border-left: none;
+  cursor: pointer;
+}  /* search bar */
+
+.search-container button:hover {
+  background: #ccc;
+}  /* search bar */
+
+#marked {
+  width: 100%;
+  text-align: right;
+  font-size: 24px;
+  color: #F8BED7;
+  padding-top: 4px;
+}
+
+#footer {
+  padding: 50px;
+  background-color: black;
+  color: white;
+  font-family: "Segoe UI Light";
+}
+
+#signfoot {
+  font-family: arial;
+}
+
+#signfoot input[type=text] {
+  background-color: black;
+  border: thin solid white;
+  color: white;
+}
+
+#signfoot input[type=button] {
+  background-color: black;
+  border: thin solid white;
+  cursor: pointer;
+  margin-top: 6px;
+  padding: 6px;
+  color: white;
+}
+
+#sosmed {
+  font-size: 34px;
+}
+
+#copyright {
+  color: white;
+  background-color: black;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Segoe UI Light";
+  height: 50px;
+}
+
+#breadcrumbs {
+  padding: 10px;
+  margin: 5px;
+  border-bottom: thin solid #E7E7E7;
+  font-family: "Segoe UI Light";
+  font-size: 12px;
+}
+
+#bc {
+  background-color: green;
+}
+
+.alt-ref {
+  color: #30B670;
+}
+
+.banner {
+  width: 80%;
+  font-family: "Segoe UI Light";
+  padding: 20px;
+}
+
+.sub-title {
+  font-size: 20px;
+  font-family: "Segoe Print";
+}
+
+.alt-ref:hover {
+  text-decoration: none;
+  color: #39CB7E;
+}
+
+nav {
+  background-color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+} /* sticky */
+
+.nav-tog {
+  font: normal 40px "responsivenav";
+  color: black;
+  font-size: 24px;
+}
+
+.cont-gress {
+  width: 600px;
+  margin: 50px auto;
+} /* progressbar */
+
+.progressbar {
+  counter-reset: step;
+} /* progressbar */
+
+.progressbar li {
+  list-style-type: none;
+  width: 25%;
+  float: left;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: #7d7d7d;
+} /* progressbar */
+
+.progressbar li:before {
+  width: 30px;
+  height: 30px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 30px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: white;
+} /* progressbar */
+
+.progressbar li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #7d7d7d;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+} /* progressbar */
+
+.progressbar li:first-child:after {
+  content: none;
+} /* progressbar */
+
+.progressbar li.active {
+  color: green;
+} /* progressbar */
+
+.progressbar li.active:before {
+  border-color: #55b776;
+} /* progressbar */
+
+.progressbar li.active + li:after {
+  background-color: #55b776;
+} /* progressbar */
+
+@media screen and (max-width: 400px) {
+  #kotak { text-align: left; }
+  #joinreseller { top: 12px; }
+  #marked { width: 100px; font-size: 18px; padding-top: 8px;}
+
+  .w3-col { width: 33.3%; }
+  .drpbtn { color: #F8BED7; font-weight: bold; padding: 8px 0px 8px 20px; }
+  .drpdwn-cont::after { left: 17%; }
+}
+
+@media screen and (max-width: 600px) {
+  #kotak { text-align: left; }
+  #joinreseller { top: 12px; }
+  #marked { width: 100px; font-size: 18px; padding-top: 8px;}
+
+  .w3-col { width: 33.3%; }
+  .drpbtn { color: #F8BED7; font-weight: bold; padding: 8px 0px 8px 20px; }
+  .banner { padding: 10px 0 0 0; width: auto; }
+  .w3-third img { padding-bottom: 10px; }
+  .drpdwn-cont::after { left: 17%; }
+}
