@@ -2,9 +2,6 @@
 
 class Customers_model extends CI_Model
 {
-
-    public $table = "cn_customer";
-
     public function __construct()
     {
         parent::__construct();
@@ -32,34 +29,6 @@ class Customers_model extends CI_Model
             return $data;
         }
     } */
-
-    public function create($data)
-    {
-        $nama               = $this->input->post('nama');
-        $tgl_lahir          = $this->input->post('tgl_lahir');
-        $telepon            = $this->input->post('telepon');
-        $email              = $this->input->post('email');
-        $jenis_kelamin      = $this->input->post('jenis_kelamin');
-        // $tanggal_registrasi = $this->input->post('tanggal_registrasi');
-
-        $data = array(
-            "nama"               => $nama,
-            "tgl_lahir"          => $tgl_lahir,
-            "telepon"            => $telepon,
-            "email"              => $email,
-            "jenis_kelamin"      => $jenis_kelamin,
-            // "tanggal_registrasi" => $tanggal_registrasi
-        );
-
-        $this->db->insert($this->table, $data);
-        $insert_id = $this->db->insert_id();
-
-        if ($insert_id) {
-            return $insert_id;
-        } else {
-            return false;
-        }
-    }
 
     public function update($id, $data)
     {
@@ -90,9 +59,17 @@ class Customers_model extends CI_Model
         }
     }
 
-    public function get($id)
+    public function get_activation_code($id)
     {
+        $this->db->select('activation_code');
         $query = $this->db->get_where('cn_customer', array('id' => $id));
+        return $query->row_array();
+    }
+
+    public function get($login_token)
+    {
+        $this->db->select('id, nama, tgl_lahir, jenis_kelamin, telepon, email');
+        $query = $this->db->get_where('cn_customer', array('login_token' => $login_token));
         return $query->row_array();
     }
 

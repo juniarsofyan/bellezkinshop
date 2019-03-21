@@ -18,12 +18,15 @@ class Customers extends CI_Controller
     public function index()
     {
         $this->check_logged_in();
+        $this->load->model('shipping_address_model');
+
 
         $data = array();
         $data['page_title'] = "My Account";
         $data['breadcrumb'][] = array('label' => 'Home', 'url' => base_url(), 'active' => 'no');
         $data['breadcrumb'][] = array('label' => 'My Account', 'url' => '', 'active' => 'yes');
-        // $data['data'] = $this->customers_model->get($id);
+        $data['customer'] = $this->customers_model->get($this->session->login_token);
+        $data['shipping_address'] = $this->shipping_address_model->get_all($data['customer']['id']);
 
         $this->load->view('customers/index', $data);
     }
@@ -89,17 +92,15 @@ class Customers extends CI_Controller
 
                 $message = "
 						<html>
-						<head>
-							<title>Verification Code</title>
-						</head>
-						<body>
-							<h2>Thank you for Registering.</h2>
-							<p>Your Account:</p>
-							<p>Email: " . $customer['email'] . "</p>
- 	 						 < p>Password: " . $customer['password'] . "</ p >
-							 < p>Please click the link below to activate your account.</p>
-							<h4><a href='" . base_url() . "customers/activate/" . $id . "/" . $activation_code . "'> Activate My Account</a></h4>
-						</body>
+                            <head>
+                                <title>Verification Code</title>
+                            </head>
+                            <body>
+                                <h2>Thank you for Registering.</h2>
+                                <p>Your Account:</p>
+                                <p>Please click the link below to activate your account.</p>
+                                <h4><a href='" . base_url() . "customers/activate/" . $id . "/" . $activation_code . "'> Activate My Account</a></h4>
+                            </body>
                         </html>";
 
                 $this->email->initialize($config);
@@ -125,7 +126,7 @@ class Customers extends CI_Controller
     {
         $id =  $this->uri->segment(3);
         $activation_code = $this->uri->segment(4);
-        $customer = $this->customers_model->get($id);
+        $customer = $this->customers_model->get_activation_code($id);
 
         // jika kode aktivasi cocok 
         if ($customer['activation_code'] == $activation_code) {
@@ -207,5 +208,58 @@ class Customers extends CI_Controller
 
             redirect('customers');
         endif;
+    }
+
+    public function add_shipping_address()
+    {
+        $this->check_logged_in();
+        $this->load->model('shipping_address_model');
+
+        if (!isset($_POST['save'])) {
+            redirect('customers');
+        } else {
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('telepon', 'Telepon', 'numeric|required');
+            $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
+            $this->form_validation->set_rules('kota', 'Kota', 'required');
+            $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('kode_pos', 'Kode Pos', 'numeric');
+
+            $data = array();
+            $data['page_title'] = "My Account";
+            $data['breadcrumb'][] = array('label' => 'Home', 'url' => base_url(), 'active' => 'no');
+            $data['breadcrumb'][] = array('label' => 'My Account', 'url' => '', 'active' => 'yes');
+            $data['customer'] = $this->customers_model->get($this->session->login_token);
+            $data['shipping_address'] = $this->shipping_address_model->get_all($data['customer']['id']);
+
+            if ($this->form_validation->run() == false) {
+                $this->load->view('customers/index', $data);
+            } else {
+                $customer['customer_id'] = $this->input->post('customer_id');
+                $customer['nama']        = $this->input->post('nama');
+                $customer['telepon']     = $this->input->post('telepon');
+                $customer['provinsi']    = $this->input->post('provinsi');
+                $customer['kota']        = $this->input->post('kota');
+                $customer['kecamatan']   = $this->input->post('kecamatan');
+                $customer['alamat']      = $this->input->post('alamat');
+                $customer['kode_pos']    = $this->input->post('kode_pos');
+                $customer['is_default']  = $this->input->post('is_default');
+
+                if ($customer['is_default']) {
+                    $this->shipping_address_model->remove_default($customer['customer_id']);
+                }
+
+                $id = $this->shipping_address_model->insert($customer);
+
+                if ($id) {
+                    $this->session->set_flashdata('message', 'Alamat berhasil ditambahkan');
+                } else {
+                    $this->session->set_flashdata('message', $this->email->print_debugger());
+                }
+
+                redirect('customers');
+            }
+        }
     }
 }
