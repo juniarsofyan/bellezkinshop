@@ -20,7 +20,6 @@ class Customers extends CI_Controller
         $this->check_logged_in();
         $this->load->model('shipping_address_model');
 
-
         $data = array();
         $data['page_title'] = "My Account";
         $data['breadcrumb'][] = array('label' => 'Home', 'url' => base_url(), 'active' => 'no');

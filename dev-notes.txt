@@ -1,0 +1,23 @@
+TO DO
+=========================
+- konsultasi bc
+- shopping cart
+- save transaksi
+- wishlist
+- transaction history
+- save payment
+
+
+TO BE DEVELOPED
+=========================
+CUSTOMERS:
+    - update profile
+SHIPPING ADDRESSES:
+    - update
+    - set default
+
+
+DONE
+=========================
+- LOGIN & REGISTER CUSTOMER
+- SHIPPING ADDRESS
