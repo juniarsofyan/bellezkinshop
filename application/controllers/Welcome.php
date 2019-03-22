@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,14 +21,20 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		// $this->load->view('welcome_message');
+
+		// $this->session->sess_destroy();
+
+		echo "<pre>";
+		print_r($this->session->cart);
+		echo "</pre>";
 	}
 
 	public function faker()
 	{
 		$faker = Faker\Factory::create('id_ID');
 		for ($i = 0; $i < 20; $i++) {
-			echo $faker->name. '<br/>';
+			echo $faker->name . '<br/>';
 		}
 	}
 }

@@ -1,11 +1,10 @@
 TO DO
 =========================
-- konsultasi bc
 - shopping cart
-- save transaksi
 - wishlist
-- transaction history
+- save transaksi
 - save payment
+- transaction history
 
 
 TO BE DEVELOPED
@@ -21,3 +20,4 @@ DONE
 =========================
 - LOGIN & REGISTER CUSTOMER
 - SHIPPING ADDRESS
+- KONSULTASI BC

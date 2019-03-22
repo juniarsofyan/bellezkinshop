@@ -6,7 +6,7 @@ class Consultation extends CI_Controller
     public function index()
     {
         $data = array();
-        $data['page_title'] = "Konsultasi BC";
+        $data['page_title']   = "Konsultasi BC";
         $data['breadcrumb'][] = array('label' => 'Home', 'url' => base_url(), 'active' => 'no');
         $data['breadcrumb'][] = array('label' => 'Contact BC', 'url' => '', 'active' => 'yes');
 
